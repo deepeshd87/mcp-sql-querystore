@@ -99,6 +99,44 @@ failure rather than raising.
   per database, ranked. One failing database does not abort the sweep; its error
   is collected and reported.
 
+## Example prompts
+
+Once the server is connected to your MCP client, you drive the tools in plain
+language. Name the target database in the prompt (except `sweep_regressions`,
+which can scan all of them). Replace `YourDB` with your database name.
+
+**Wait stats — why queries are slow**
+- "What are the top wait categories in YourDB over the last week?"
+- "Is YourDB waiting on CPU, memory, or IO?"
+- "Show me wait stats for YourDB over the last 24 hours."
+
+**Execution plans**
+- "Get the execution plan for query_id 10 in YourDB and summarize it."
+- "Does query_id 13 in YourDB have missing index recommendations?"
+- "Are there implicit conversion warnings in query 12's plan in YourDB?"
+
+**Regression analysis**
+- "Check YourDB for CPU regressions over the last 24 hours."
+- "Which queries in YourDB regressed by more than 30%?"
+- "Find duration regressions in YourDB, ignoring anything with fewer than 10 executions."
+
+**Parameter sniffing**
+- "Check YourDB for parameter sniffing."
+- "Which queries in YourDB have unstable plans?"
+
+**Missing indexes**
+- "What missing indexes does YourDB need most?"
+- "Show me the top 10 index recommendations for YourDB by impact."
+
+**Multi-database sweep (no database name needed)**
+- "Sweep all my databases for CPU regressions."
+- "Which database has the worst regressions this week?"
+
+**Combined — chaining tools in one turn**
+- "Find the biggest CPU regression in YourDB, pull its plan, and tell me why it might have regressed."
+- "YourDB feels slow — diagnose it." (wait stats → regressions → plans)
+- "Full performance triage of YourDB: wait stats, top regressions, and missing indexes."
+
 ## Known caveats / TODO
 
 - **Version differences.** Query Store column names assume SQL Server 2019+/2022
