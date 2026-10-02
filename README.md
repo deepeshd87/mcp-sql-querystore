@@ -57,19 +57,30 @@ code in this repo:
 
 ## Setup
 
-```bash
-pip install -e .
-# ODBC Driver 18 for SQL Server must be installed on the host.
+ODBC Driver 18 for SQL Server must be installed on the host. Install the package,
+then configure the connection via environment variables (see **Secret handling**
+for all options). The recommended form keeps the password in a file, not inline:
 
-export MCP_SQL_CONNECTION_STRING="Driver={ODBC Driver 18 for SQL Server};\
-Server=tcp:yourhost,1433;Database=master;UID=mcp_readonly;PWD=...;\
-Encrypt=yes;TrustServerCertificate=no"
+```powershell
+pip install -e .
+
+# PowerShell — connection assembled from parts, password read from a file
+$env:MCP_SQL_SERVER      = "yourhost\INSTANCE"
+$env:MCP_SQL_DATABASE    = "master"
+$env:MCP_SQL_UID         = "mcp_readonly"
+$env:MCP_SQL_PWD_FILE    = "C:\path\to\your\secret.pwd"
+$env:MCP_SQL_TRUST_CERT  = "no"   # "yes" only for a self-signed/local cert
 
 python -m mcp_sql_querystore.server
 ```
 
-Register it with your MCP client (e.g. Claude Desktop config) as an stdio server
-invoking `python -m mcp_sql_querystore.server`.
+Or use integrated auth with no stored password at all (`MCP_SQL_TRUSTED=yes`).
+A full `MCP_SQL_CONNECTION_STRING` is also accepted for simple cases — see
+**Secret handling**.
+
+Register it with your MCP client (e.g. Claude Desktop) as an stdio server
+invoking `python -m mcp_sql_querystore.server`; see
+`claude_desktop_config.example.json`.
 
 ## Tools
 
