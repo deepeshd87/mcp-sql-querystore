@@ -1,0 +1,21 @@
+# Secrets — never commit
+pwd.txt
+*.pwd
+*.secret
+.env
+claude_desktop_config.json
+
+# Virtual environments
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Local plan captures
+*.sqlplan

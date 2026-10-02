@@ -1,0 +1,51 @@
+Wait stats (get_wait_stats) — why queries are slow
+
+"What are the top wait categories in the database name over the last week?"
+"Is database name waiting on CPU, memory, or IO?"
+"Show me wait stats for database name over the last 24 hours."
+"What's the dominant wait type in database name right now?"
+
+Execution plans (get_query_execution_plan)
+
+"Get the execution plan for query_id 10 in database name and summarize it."
+"Show me the plan for query 20 in database name, including the raw XML."
+"Does query_id 13 in database name have missing index recommendations?"
+"Are there implicit conversion warnings in query 12's plan in database name?"
+"Compare the plans for query 10 and query 20 in database name."
+
+Regression analysis (get_regressed_queries)
+
+"Check database name for CPU regressions over the last 24 hours."
+"Find queries in database name whose duration got worse this week vs last week."
+"Show me logical-read regressions in database name, top 5."
+"Which queries in database name regressed by more than 30%?"
+"Find regressions in database name, ignoring anything with fewer than 10 executions."
+
+Parameter sniffing (analyze_parameter_sniffing)
+
+"Check database name for parameter sniffing."
+"Which queries in database name have unstable plans?"
+"Find queries in database name where one plan is much slower than another."
+"Show me the top sniffing suspects in database name."
+
+Missing indexes (get_missing_index_impact)
+
+"What missing indexes does database name need most?"
+"Show me the top 10 index recommendations for database name by impact."
+"Which missing index in database name would help the most queries?"
+"Scan more plans in database name for missing indexes — use a scan limit of 500."
+
+Multi-database sweep (sweep_regressions) — no database name needed
+
+"Sweep all my databases for CPU regressions."
+"Which database has the worst regressions this week?"
+"Triage the whole instance for duration regressions over the last 24 hours."
+"Sweep database name and master for regressions." (explicit list)
+
+Combined / multi-tool — where chaining tools pays off
+
+"Find the biggest CPU regression in database name, pull its plan, and tell me why it might have regressed."
+"database name feels slow — diagnose it." (Claude can chain wait stats → regressions → plans)
+"Full performance triage of database name: wait stats, top regressions, and missing indexes."
+"Find a parameter-sniffing query in database name and show me its different plans."
+"What's the single highest-impact change I could make to database name right now?"

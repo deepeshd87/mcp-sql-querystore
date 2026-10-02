@@ -1,0 +1,16 @@
+{
+  "_comment": "Copy the sql-querystore block into your real Claude Desktop config (on Windows: %APPDATA%\\Claude\\claude_desktop_config.json). Replace every placeholder. Do NOT commit your real config or password. See the Quickstart in README.md.",
+  "mcpServers": {
+    "sql-querystore": {
+      "command": "C:\\path\\to\\mcp-sql-querystore\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "mcp_sql_querystore.server"],
+      "env": {
+        "MCP_SQL_SERVER": "YOUR_SERVER\\INSTANCE",
+        "MCP_SQL_DATABASE": "master",
+        "MCP_SQL_UID": "mcp_readonly",
+        "MCP_SQL_PWD_FILE": "C:\\path\\to\\your\\secret.pwd",
+        "MCP_SQL_TRUST_CERT": "no"
+      }
+    }
+  }
+}
