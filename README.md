@@ -10,8 +10,6 @@ those noted under caveats.
 
 ## Quickstart
 
-You supply your own SQL Server and credentials — none ship with this repo.
-
 1. **Provision a read-only login.** Run `provisioning/create_readonly_login.sql`
    against your instance (edit names first). This login's permissions are the
    read-only guarantee — see the security model below.
