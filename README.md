@@ -1,3 +1,5 @@
+mcp-name: io.github.deepeshd87/mcp-sql-querystore
+
 # mcp-sql-querystore
 
 Read-only MCP server exposing SQL Server Query Store diagnostics to LLM agents.
