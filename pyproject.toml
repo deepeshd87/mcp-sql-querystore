@@ -1,15 +1,37 @@
 [project]
 name = "mcp-sql-querystore"
 version = "0.1.0"
-description = "Read-only MCP server for SQL Server Query Store diagnostics"
+description = "Read-only MCP server for SQL Server performance diagnostics over Query Store, DMVs, and execution plans"
+readme = "README.md"
 requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Deepesh Dhake" }]
+keywords = [
+    "mcp", "model-context-protocol", "sql-server", "mssql",
+    "query-store", "dba", "performance-tuning", "database",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Database",
+    "Topic :: System :: Monitoring",
+]
 dependencies = [
     "mcp>=1.2.0,<2",
     "pyodbc>=5.1.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/deepeshd87/mcp-sql-querystore"
+Repository = "https://github.com/deepeshd87/mcp-sql-querystore"
+Issues = "https://github.com/deepeshd87/mcp-sql-querystore/issues"
+
 [project.scripts]
-mcp-sql-querystore = "mcp_sql_querystore.server:main"
+mcp-sql-querystore = "mcp_sql_querystore.server:run"
 
 [build-system]
 requires = ["hatchling"]
