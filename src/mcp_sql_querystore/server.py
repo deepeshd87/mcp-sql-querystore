@@ -491,7 +491,14 @@ async def main() -> None:
         await app.run(read_stream, write_stream, app.create_initialization_options())
 
 
-if __name__ == "__main__":
+def run() -> None:
+    """Synchronous entry point for the console script. The console script in
+    pyproject.toml must point here, not at the async `main`, or invoking the
+    command just creates a coroutine and never awaits it."""
     import asyncio
 
     asyncio.run(main())
+
+
+if __name__ == "__main__":
+    run()
